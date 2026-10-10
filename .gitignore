@@ -7,7 +7,6 @@ venv/
 # Local YOLO outputs and model weights
 runs/
 weights/
-*.pt
 
 # Generated/local datasets and private photos
 data/raw/*
