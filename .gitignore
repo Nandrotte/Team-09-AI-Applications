@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Local YOLO outputs and model weights
+runs/
+weights/
+*.pt
+
+# Generated/local datasets and private photos
+data/raw/*
+data/raw/primagaz_nok/
+data/processed/*
+!data/
+!data/raw/
+!data/raw/roboflow_gas_tank_yolo/
+!data/raw/roboflow_gas_tank_yolo/**
+!data/processed/
+!data/processed/gasbottles/
+data/processed/gasbottles/*
+!data/processed/gasbottles/data.yaml
+
+# Local editor and environment files
+.vscode/
+.idea/
+.env

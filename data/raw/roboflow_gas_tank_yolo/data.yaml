@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 2
+names: ['bubble', 'gas-tank']
+
+roboflow:
+  workspace: zxc-lgbhl
+  project: gas-tank-yolo-dataset
+  version: 3
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/zxc-lgbhl/gas-tank-yolo-dataset/dataset/3

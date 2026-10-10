@@ -1,0 +1,2 @@
+timestamp_utc,threshold,model,source,output,class_id,class_name,confidence,x1,y1,x2,y2
+20261010T112117Z,0.15,yolo26n.pt,C:\Users\nandr\UCLL\jaar3\semester 1\AI Applications\Team-09-AI-Applications\images_nok_bottles_taken_at_primagaz_plant\images nok bottles taken at primagaz plant\20250326_110923.jpg,runs\validation-detection\20261010T112117Z\conf_0_15\20250326_110923.jpg,61,toilet,0.151811,61.36,266.72,822.57,1549.72
