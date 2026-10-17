@@ -25,3 +25,7 @@ data/processed/gasbottles/*
 .vscode/
 .idea/
 .env
+
+# Large demo videos (regenerate with scripts/demo_multicam.py)
+results/demo/*.mp4
+results/tracking/*.mp4
