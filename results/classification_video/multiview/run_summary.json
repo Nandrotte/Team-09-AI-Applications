@@ -1,0 +1,14 @@
+{
+  "video": "C:\\Users\\Gebruiker\\Videos\\Videos compleet\\Workshop  test video.mp4",
+  "size": "2704x1520",
+  "fps": 23.976023976023978,
+  "duration_s": 59.85,
+  "sampled_frames": 287,
+  "stride": 5,
+  "tracks_by_view": {
+    "front": 14,
+    "left": 22,
+    "right": 18
+  },
+  "note": "Unlabeled video: classifications are predictions, not accuracy metrics. Track IDs are local to each view."
+}

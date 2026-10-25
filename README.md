@@ -156,6 +156,31 @@ Voor OK/NOK-classificatie zijn gelabelde voorbeelden van beide klassen nodig. De
 
 Dat is een aparte classificatie- of detectietaak en moet niet worden afgeleid uit de huidige `gas-tank`-detectieklasse.
 
+### Workshop 5: eerste OK/NOK-classifier
+
+De lokale ZIP `ai_applications_ok_nok_classification_training_set.zip` bevat 1.005 OK- en 226 NOK-afbeeldingen. Maak een reproduceerbare 70/15/15 train/validatie/test-split; foto's met hetzelfde fles-ID blijven bij elkaar:
+
+```powershell
+python scripts\prepare_ok_nok_dataset.py
+python scripts\train_ok_nok.py --device cpu
+```
+
+De training gebruikt een YOLO-classificatiemodel en schrijft de gewichten naar `models/ok_nok_best.pt`; testmetrics en trainingsartefacten staan onder `results/`. Voor classificatie van gedetecteerde fles-tracks:
+
+```powershell
+python scripts\track_bottles.py --video "pad\naar\video.mp4" --classifier models\ok_nok_best.pt --save-video
+```
+
+De classifier gemiddeld de NOK-kans over meerdere frames per track. Hij is bedoeld voor grove zichtbare schade, ernstige vervuiling en een afwijkend oud type; kleine deuken, krassen, tare-weight en certificeringsjaar vallen buiten deze versie. De dataset en getrainde gewichten zijn lokaal en worden niet naar GitHub geüpload. Zie [WORKSHOP5_REPORT.md](WORKSHOP5_REPORT.md) voor de voortgang en beperkingen.
+
+Test the supplied synchronized three-panel video (front top, left bottom-left, right bottom-right) with:
+
+```powershell
+python scripts\test_ok_nok_multiview_video.py --video "C:\path\to\Workshop  test video.mp4" --device cpu
+```
+
+Per-view track predictions and timestamps are written to `results/classification_video/multiview/`. Track IDs are independent between views; without ground-truth labels this output cannot measure accuracy.
+
 ## Dataset en licentie
 
 De brondata is een YOLO-export uit Roboflow Universe. Controleer de licentie en vereiste attributie in de bestanden in [`data/raw/roboflow_gas_tank_yolo/`](data/raw/roboflow_gas_tank_yolo/) voordat de dataset buiten de onderwijsopdracht wordt verspreid.

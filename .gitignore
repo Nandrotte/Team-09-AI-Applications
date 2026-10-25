@@ -20,12 +20,18 @@ data/processed/*
 !data/processed/gasbottles/
 data/processed/gasbottles/*
 !data/processed/gasbottles/data.yaml
+data/processed/ok_nok/
+models/ok_nok_best.pt
+results/training/ok_nok_*/
+results/test/ok_nok_*/
 
 # Local editor and environment files
 .vscode/
 .idea/
 .env
+.ultralytics/
 
 # Large demo videos (regenerate with scripts/demo_multicam.py)
 results/demo/*.mp4
+results/demo/workshop5/*.mp4
 results/tracking/*.mp4
