@@ -1,0 +1,41 @@
+{
+  "recording": "14_32",
+  "weights": "models\\ok_nok_best.pt",
+  "threshold": 0.32,
+  "aggregation": "mean of top-3 crop NOK probabilities",
+  "mapping": "colour alignment",
+  "bottles_evaluated": 173,
+  "vs_classification (visual ground truth)": {
+    "tp": 5,
+    "fp": 1,
+    "fn": 1,
+    "tn": 166,
+    "nok_precision": 0.8333,
+    "nok_recall": 0.8333,
+    "f2": 0.8333,
+    "false_alarm_rate": 0.006,
+    "accuracy": 0.9884
+  },
+  "vs_classification, mean over all crops": {
+    "tp": 1,
+    "fp": 0,
+    "fn": 5,
+    "tn": 167,
+    "nok_precision": 1.0,
+    "nok_recall": 0.1667,
+    "f2": 0.2,
+    "false_alarm_rate": 0.0,
+    "accuracy": 0.9711
+  },
+  "vs_primagaz_status (operator, for information)": {
+    "tp": 3,
+    "fp": 3,
+    "fn": 12,
+    "tn": 155,
+    "nok_precision": 0.5,
+    "nok_recall": 0.2,
+    "f2": 0.2273,
+    "false_alarm_rate": 0.019,
+    "accuracy": 0.9133
+  }
+}
