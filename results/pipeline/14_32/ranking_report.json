@@ -1,0 +1,29 @@
+{
+  "recording": "14_32",
+  "weights": {
+    "sync": 0.25,
+    "visual_f2": 0.3,
+    "tare": 0.25,
+    "year": 0.2
+  },
+  "parts": {
+    "sync": 0.9943,
+    "visual_f2": 0.8333,
+    "tare": 0.3376,
+    "year": 0.4513
+  },
+  "sync_source": "colour alignment (upper bound: aligned pairs)",
+  "ranking_score": 67.3,
+  "final_decision_vs_primagaz_status": {
+    "rule": "push out if visually NOK or read year < 2025",
+    "tp": 5,
+    "fp": 5,
+    "fn": 10,
+    "tn": 153,
+    "nok_precision": 0.5,
+    "nok_recall": 0.3333,
+    "f2": 0.3571,
+    "false_alarm_rate": 0.0316,
+    "accuracy": 0.9133
+  }
+}

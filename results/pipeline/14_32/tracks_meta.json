@@ -1,0 +1,44 @@
+{
+  "front": {
+    "video": "data\\raw\\primagaz\\14_32\\14_32_front_cropped.mp4",
+    "fps": 23.0,
+    "frame_count": 16956,
+    "width": 2704,
+    "height": 1520,
+    "stride": 2,
+    "conf": 0.25,
+    "imgsz": 640,
+    "model": "models\\primagaz_detector.pt",
+    "class_id": 0,
+    "rows": 8726,
+    "seconds": 343.4
+  },
+  "back_left": {
+    "video": "data\\raw\\primagaz\\14_32\\14_32_back_left_cropped.mp4",
+    "fps": 23.0,
+    "frame_count": 16956,
+    "width": 2704,
+    "height": 1520,
+    "stride": 2,
+    "conf": 0.25,
+    "imgsz": 640,
+    "model": "models\\primagaz_detector.pt",
+    "class_id": 0,
+    "rows": 8953,
+    "seconds": 268.0
+  },
+  "back_right": {
+    "video": "data\\raw\\primagaz\\14_32\\14_32_back_right_cropped.mp4",
+    "fps": 23.0,
+    "frame_count": 16956,
+    "width": 2704,
+    "height": 1520,
+    "stride": 2,
+    "conf": 0.25,
+    "imgsz": 640,
+    "model": "models\\primagaz_detector.pt",
+    "class_id": 0,
+    "rows": 8747,
+    "seconds": 268.2
+  }
+}

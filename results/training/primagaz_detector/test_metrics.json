@@ -1,0 +1,8 @@
+{
+  "weights": "models\\primagaz_detector.pt",
+  "train_run": "results\\training\\primagaz_detector",
+  "test_precision": 0.9927,
+  "test_recall": 0.9724,
+  "test_mAP50": 0.9898,
+  "test_mAP50_95": 0.9492
+}

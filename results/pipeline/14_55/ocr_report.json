@@ -1,0 +1,55 @@
+{
+  "recording": "14_55",
+  "engine": "EasyOCR (en) + regex + weighted vote",
+  "settings": {
+    "per_camera": 3,
+    "band": [
+      0.3,
+      0.85
+    ],
+    "max_side": 1600,
+    "mag_ratio": 1.5,
+    "rotation": false
+  },
+  "bottles": 110,
+  "mapping": "reference frames",
+  "seconds": 620.1,
+  "tare_vs_lector_reading": {
+    "bottles": 78,
+    "read": 32,
+    "coverage": 0.4103,
+    "mae_kg": 0.281,
+    "median_abs_error_kg": 0.0,
+    "rmse_kg": 1.556,
+    "exact_0.1kg": 0.9062,
+    "within_0.2kg": 0.9688,
+    "gross_errors_over_1kg": 1,
+    "usable_rate": 0.3974
+  },
+  "tare_vs_primagaz_scale": {
+    "bottles": 88,
+    "read": 30,
+    "coverage": 0.3409,
+    "mae_kg": 0.3,
+    "median_abs_error_kg": 0.0,
+    "rmse_kg": 1.607,
+    "exact_0.1kg": 0.9,
+    "within_0.2kg": 0.9667,
+    "gross_errors_over_1kg": 1,
+    "usable_rate": 0.3295
+  },
+  "year": {
+    "bottles": 66,
+    "read": 40,
+    "coverage": 0.6061,
+    "decision_rule": "certified if year >= 2025",
+    "exact": 0.875,
+    "mae_years": 0.675,
+    "decision_accuracy": 1.0,
+    "wrong_expired_decisions": 0,
+    "usable_rate": 0.5303
+  },
+  "tare_score_partial_credit": 0.3923,
+  "year_score": 0.5682,
+  "note": "Ground-truth values marked '?' or uncertain in the workbook are excluded."
+}

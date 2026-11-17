@@ -1,0 +1,66 @@
+{
+  "recording": "14_55",
+  "offsets": {
+    "front": 0,
+    "back_left": 35,
+    "back_right": 5
+  },
+  "offset_purity": {},
+  "k": 6,
+  "stride": 2,
+  "min_area": 0.08,
+  "ground_truth_bottles": 112,
+  "reference_bottles": 107,
+  "modes": {
+    "strict": {
+      "bottles_found": 110,
+      "count_error": -2,
+      "reference": {
+        "reference_bottles": 107,
+        "found": 107,
+        "recall": 1.0,
+        "one_to_one": 107,
+        "one_to_one_rate": 1.0,
+        "exact_id": 107,
+        "exact_id_rate": 1.0,
+        "missed_ids": [],
+        "merged": {},
+        "split_ids": [],
+        "false_bottles": [
+          48,
+          49,
+          59
+        ],
+        "predicted_in_range": 110
+      }
+    },
+    "robust": {
+      "bottles_found": 110,
+      "count_error": -2,
+      "reference": {
+        "reference_bottles": 107,
+        "found": 107,
+        "recall": 1.0,
+        "one_to_one": 105,
+        "one_to_one_rate": 0.9813,
+        "exact_id": 30,
+        "exact_id_rate": 0.2804,
+        "missed_ids": [],
+        "merged": {
+          "82": [
+            81,
+            82
+          ]
+        },
+        "split_ids": [],
+        "false_bottles": [
+          2,
+          49,
+          50,
+          60
+        ],
+        "predicted_in_range": 110
+      }
+    }
+  }
+}

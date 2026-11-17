@@ -20,7 +20,7 @@ def main() -> int:
     )
     parser.add_argument(
         "--model",
-        default=str(repository_root / "models" / "yolo26n.pt"),
+        default=str(repository_root / "models" / "pretrained" / "yolo26n.pt"),
     )
     parser.add_argument("--epochs", type=int, default=20)
     parser.add_argument("--imgsz", type=int, default=416)
