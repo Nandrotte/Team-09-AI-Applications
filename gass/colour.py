@@ -22,11 +22,3 @@ def cyan_fraction(crop: np.ndarray) -> float:
     mask = (hue >= 35) & (hue <= 100) & (sat >= 70) & (val >= 50)
     return float(mask.mean())
 
-
-def bottle_colour(crops: list[np.ndarray], threshold: float = 0.25) -> tuple[str, float]:
-    """Majority colour over several crops of the same bottle; returns (colour, mean fraction)."""
-    if not crops:
-        return "unknown", 0.0
-    fractions = [cyan_fraction(c) for c in crops]
-    mean = float(np.median(fractions))
-    return ("cyan" if mean >= threshold else "black"), round(mean, 3)

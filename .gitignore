@@ -59,3 +59,4 @@ results/pipeline/**/*.log
 
 # Public YouTube stand-in video used in WS2 v1 (not ours to redistribute)
 testvideo/
+results/pipeline/**/*_dev.*

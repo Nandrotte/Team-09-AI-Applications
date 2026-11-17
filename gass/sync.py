@@ -55,31 +55,6 @@ def load_biggest_boxes(csv_path: Path, min_area: float = 0.0) -> dict[int, tuple
     return {frame: (track, box) for frame, (_, track, box) in best.items()}
 
 
-def change_events(biggest: dict[int, tuple[int, tuple]], min_gap: int = 20) -> list[int]:
-    """Frames where the biggest-box track id changes (a new bottle takes over the view)."""
-    events, last_track, last_event = [], None, -10**9
-    for frame in sorted(biggest):
-        track = biggest[frame][0]
-        if track != last_track and frame - last_event >= min_gap:
-            events.append(frame)
-            last_event = frame
-        last_track = track
-    return events
-
-
-def estimate_offset(ref_events: list[int], cam_events: list[int], search: int = 200, tolerance: int = 6) -> tuple[int, int]:
-    """Offset (camera frame - reference frame) that lines up the most change events."""
-    best = (-1, 0)
-    for offset in range(-search, search + 1):
-        cam = set()
-        for e in cam_events:
-            cam.update(range(e - offset - tolerance, e - offset + tolerance + 1))
-        score = sum(1 for e in ref_events if e in cam)
-        if score > best[0] or (score == best[0] and abs(offset) < abs(best[1])):
-            best = (score, offset)
-    return best[1], best[0]
-
-
 def estimate_offset_purity(ref: dict[int, tuple[int, tuple]], cam: dict[int, tuple[int, tuple]],
                            search: int = 120, stride: int = 2) -> tuple[int, float]:
     """Offset (camera frame - reference frame) at which the biggest-box track ids of the

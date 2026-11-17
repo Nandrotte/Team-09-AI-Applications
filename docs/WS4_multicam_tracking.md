@@ -34,7 +34,7 @@ Synchronisation failed in the first iteration because the web-photo detector mis
 
 ## Limits and next steps
 
-- Offline processing: 3 × 23 frames/s on a laptop GPU (RTX, 6 GB) at stride 2. That is about real time for one camera, so a live installation needs a GPU per line or a larger stride.
+- Speed on a 6 GB laptop GPU, every 2nd frame: about 31 processed frames/s per camera, i.e. 2.7× real time for one camera and 0.9× real time for all three. A live installation needs a desktop GPU or a larger stride; the sync itself takes under a second.
 - The top camera is not used yet.
 - Bottles that the operator removes between camera view and filling are visible in the video but missing from the filling log. The workbook used here is per camera passage, so this does not affect the scores above.
 
