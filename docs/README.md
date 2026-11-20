@@ -9,6 +9,7 @@ Deze map legt uit hoe het project werkt: welk bestand wat doet, wat erin gaat en
 | [WS4_tracking_en_sync.md](WS4_tracking_en_sync.md) | Tracken per camera en één ID per fles over de 3 camera's |
 | [WS5_ok_nok.md](WS5_ok_nok.md) | OK/NOK-classificatie per fles |
 | [WS6_ocr_en_score.md](WS6_ocr_en_score.md) | Tarra en jaar lezen (OCR) en de rankingscore |
+| [verdediging.md](verdediging.md) | Voorbereiding verdediging: begrippen, cijfers, verwachte vragen, zwakke punten |
 
 WS3 (CNN-notebook) was een persoonlijke opdracht en WS7 wordt door iemand anders gemaakt; die staan hier niet in.
 

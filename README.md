@@ -20,6 +20,7 @@ Groep 9: Hendrik Beeken, Nand Rotté, Andres Rafael Rivas Barreto.
 | WS4 – tracking en sync over 3 camera's | [docs/WS4_tracking_en_sync.md](docs/WS4_tracking_en_sync.md) |
 | WS5 – OK/NOK per fles | [docs/WS5_ok_nok.md](docs/WS5_ok_nok.md) |
 | WS6 – OCR en rankingscore | [docs/WS6_ocr_en_score.md](docs/WS6_ocr_en_score.md) |
+| Voorbereiding verdediging | [docs/verdediging.md](docs/verdediging.md) |
 
 ## Snel starten
 
