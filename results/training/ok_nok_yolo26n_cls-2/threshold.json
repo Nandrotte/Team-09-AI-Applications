@@ -1,0 +1,29 @@
+{
+  "weights": "models\\ok_nok_best.pt",
+  "train_run": "results\\training\\ok_nok_yolo26n_cls-2",
+  "imgsz": 224,
+  "nok_threshold": 0.32,
+  "threshold_rule": "max F2 on validation images",
+  "val_at_threshold": {
+    "tp": 49,
+    "fp": 2,
+    "fn": 1,
+    "tn": 304,
+    "nok_precision": 0.9608,
+    "nok_recall": 0.98,
+    "f2": 0.9761,
+    "false_alarm_rate": 0.0065,
+    "accuracy": 0.9916
+  },
+  "val_at_0.5": {
+    "tp": 46,
+    "fp": 1,
+    "fn": 4,
+    "tn": 305,
+    "nok_precision": 0.9787,
+    "nok_recall": 0.92,
+    "f2": 0.9312,
+    "false_alarm_rate": 0.0033,
+    "accuracy": 0.986
+  }
+}

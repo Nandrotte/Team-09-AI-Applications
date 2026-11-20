@@ -1,0 +1,28 @@
+{
+  "recording": "14_32",
+  "main_mode": "strict",
+  "offsets": {
+    "front": 0,
+    "back_left": 20,
+    "back_right": 46
+  },
+  "offset_purity": {
+    "back_left": 0.9705,
+    "back_right": 0.9874
+  },
+  "k": 6,
+  "stride": 2,
+  "min_area": 0.08,
+  "ground_truth_bottles": 174,
+  "reference_bottles": 0,
+  "modes": {
+    "strict": {
+      "bottles_found": 173,
+      "count_error": -1
+    },
+    "robust": {
+      "bottles_found": 173,
+      "count_error": -1
+    }
+  }
+}

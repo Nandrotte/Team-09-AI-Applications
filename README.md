@@ -1,161 +1,40 @@
-# Gas Bottle Detection
+# Team 09 – Gasflessen-inspectie voor Primagaz (AI Applications)
 
-YOLO-prototype voor het detecteren van gasflessen in afbeeldingen. Het model lokaliseert een gasfles met een bounding box. **OK/NOK-classificatie maakt nog geen deel uit van deze versie.**
+Een prototype dat alleen uit software bestaat. Het volgt elke gasfles op de transportband van Primagaz door de camera's front, back_left en back_right, en geeft per fles:
+- **één oplopend ID**, hetzelfde in alle camera's;
+- een **OK/NOK**-beslissing (schade, vuil, oud type);
+- de **tarra** en het **certificatiejaar**, gelezen met OCR.
 
-## Resultaten
+Elke stap wordt per fles vergeleken met de ground truth (Excel) van Primagaz.
 
-Elke training en testevaluatie wordt opgeslagen in een eigen runmap onder [`results/`](results/). De README bevat bewust geen vaste evaluatiecijfers, omdat uitkomsten kunnen verschillen wanneer de dataset, configuratie of training wordt aangepast.
+Groep 9: Hendrik Beeken, Nand Rotté, Andres Rafael Rivas Barreto.
 
-Bekijk de `results.csv`, confusion matrices, detectiecurves en voorbeeldafbeeldingen in de meest recente runmap. Validatie met nieuwe, realistische beelden blijft nodig voordat conclusies over productiegebruik worden getrokken.
+## Uitleg
 
-## Projectstructuur
+**Lees eerst [docs/README.md](docs/README.md).** Daar staan de mappenstructuur, de dataflow en hoe je alles draait. Daarna per workshop:
 
-```text
-.
-├── data/
-│   ├── raw/
-│   │   ├── roboflow_gas_tank_yolo/  # gedeelde brondata met afbeeldingen en labels
-│   │   └── primagaz_nok/            # lokale, privéfoto's; niet voor Git
-│   └── processed/
-│       └── gasbottles/              # lokaal gegenereerde train/val/test-splits
-├── models/
-│   └── yolo26n.pt                   # YOLO26n-basismodel; lokaal
-├── results/
-│   ├── training/                    # trainingscurves en trainingsartefacten
-│   ├── test/                        # evaluatie op de testsplit
-│   └── predictions/                 # resultaten op nieuwe afbeeldingen
-├── scripts/
-│   ├── 03_dataset_check.py
-│   ├── prepare_gas_dataset.py
-│   ├── train_gas_tank.py
-│   └── predict_gas_tank.py
-├── .gitignore
-├── requirements.txt
-└── README.md
+| Workshop | Uitleg |
+|---|---|
+| WS1 – aanpak en metingen | [docs/WS1_aanpak.md](docs/WS1_aanpak.md) |
+| WS2 – detectie | [docs/WS2_detectie.md](docs/WS2_detectie.md) |
+| WS4 – tracking en sync over 3 camera's | [docs/WS4_tracking_en_sync.md](docs/WS4_tracking_en_sync.md) |
+| WS5 – OK/NOK per fles | [docs/WS5_ok_nok.md](docs/WS5_ok_nok.md) |
+| WS6 – OCR en rankingscore | [docs/WS6_ocr_en_score.md](docs/WS6_ocr_en_score.md) |
+
+## Snel starten
+
+```bash
+py -m pip install -r requirements.txt
 ```
 
-De Roboflow-brondataset wordt gedeeld via GitHub, zodat alle teamleden met dezelfde data kunnen werken. De Primagaz-foto's, gegenereerde datasets en modelgewichten blijven lokaal en worden door `.gitignore` uitgesloten.
-
-## Vereisten
-
-- Python 3.14 of een compatibele Python-versie
-- NVIDIA-GPU met werkende CUDA-installatie voor GPU-training
-- CUDA-enabled PyTorch in de gebruikte Pythonomgeving
-
-Installeer de projectafhankelijkheden vanuit de repository-root:
-
-```powershell
-& C:\pad\naar\python.exe -m pip install -r requirements.txt
+```bash
+py scripts/run_pipeline.py --recording 14_32
 ```
 
-Controleer CUDA:
+De pijplijn heeft de Primagaz-data in `data/raw/primagaz/` nodig, plus de getrainde modellen. Hoe je beide klaarzet, staat in [docs/README.md](docs/README.md#van-nul-beginnen).
 
-```powershell
-& C:\pad\naar\python.exe -c "import torch; print(torch.cuda.is_available()); print(torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'CPU')"
-```
+## NDA
 
-## Dataset voorbereiden
+De Primagaz-data valt onder een NDA. Video's, frames, crops, Excel-waarden per fles en modellen die op die data getraind zijn, horen niet in een publieke repository; de `.gitignore` houdt ze buiten Git.
 
-De gedeelde Roboflow-export staat in:
-
-```text
-data/raw/roboflow_gas_tank_yolo/
-```
-
-Maak de lokale dataset aan en controleer de annotaties:
-
-```powershell
-& C:\pad\naar\python.exe scripts\prepare_gas_dataset.py
-& C:\pad\naar\python.exe scripts\03_dataset_check.py
-```
-
-Het script maakt met seed `42` dezelfde verdeling:
-
-- 80% training
-- 10% validatie
-- 10% test
-
-De verwerkte dataset komt in `data/processed/gasbottles/`. Deze map is reproduceerbaar en hoeft niet naar GitHub te worden geüpload.
-
-## Trainen en evalueren
-
-Start een training met:
-
-```powershell
-& C:\pad\naar\python.exe scripts\train_gas_tank.py
-```
-
-Standaardinstellingen:
-
-- basismodel: `models/yolo26n.pt`
-- 20 epochs
-- image size: 416
-- batch size: 8
-- device: `cuda`
-- dataloader workers: 0, voor stabiele werking op Windows
-
-De training en testevaluatie worden opgeslagen onder:
-
-```text
-results/training/
-results/test/
-```
-
-Elke nieuwe run krijgt een eigen map. Het beste model wordt daarnaast gekopieerd naar:
-
-```text
-models/gas_tank_best.pt
-```
-
-## Voorspellen op nieuwe beelden
-
-Gebruik het laatst getrainde model op één afbeelding:
-
-```powershell
-& C:\pad\naar\python.exe scripts\predict_gas_tank.py `
-  --source "C:\pad\naar\foto.jpg" `
-  --device cuda `
-  --conf 0.25
-```
-
-De standaardlocatie voor het getrainde model is `models/gas_tank_best.pt`. De geannoteerde afbeeldingen worden opgeslagen onder:
-
-```text
-results/predictions/gas_tank/
-```
-
-Voor een lokale test met Primagaz-foto's:
-
-```powershell
-& C:\pad\naar\python.exe scripts\predict_gas_tank.py `
-  --source "data\raw\primagaz_nok" `
-  --device cuda
-```
-
-Deze foto's zijn privé en worden niet naar GitHub gestuurd. Een predictie-run is geen formele evaluatie, omdat er voor deze foto's geen ground-truth-labels beschikbaar zijn.
-
-## Resultaten bekijken
-
-Na een training vind je de artefacten in de runmap onder [`results/training/`](results/training/):
-
-- `results.png` — trainingsverloop per epoch;
-- `results.csv` — waarden per epoch;
-- `confusion_matrix.png` — confusion matrix;
-- `BoxP_curve.png`, `BoxR_curve.png`, `BoxPR_curve.png` en `BoxF1_curve.png` — detectiecurves;
-- `val_batch*_labels.jpg` en `val_batch*_pred.jpg` — echte annotaties tegenover voorspellingen.
-
-De testartefacten staan onder [`results/test/`](results/test/). Predictie-uitvoer staat onder [`results/predictions/`](results/predictions/), waaronder de bestaande [`detections.csv`](results/predictions/detections.csv).
-
-## Volgende stap: OK/NOK
-
-Voor OK/NOK-classificatie zijn gelabelde voorbeelden van beide klassen nodig. De dataset moet dan minstens bevatten:
-
-- OK-gasflessen;
-- NOK-gasflessen;
-- voldoende variatie in positie, belichting, achtergrond en type beschadiging.
-
-Dat is een aparte classificatie- of detectietaak en moet niet worden afgeleid uit de huidige `gas-tank`-detectieklasse.
-
-## Dataset en licentie
-
-De brondata is een YOLO-export uit Roboflow Universe. Controleer de licentie en vereiste attributie in de bestanden in [`data/raw/roboflow_gas_tank_yolo/`](data/raw/roboflow_gas_tank_yolo/) voordat de dataset buiten de onderwijsopdracht wordt verspreid.
+De eerste detector (`scripts/prepare_gas_dataset.py`, `train_gas_tank.py`, …) is getraind op een publieke Roboflow-set in `data/raw/roboflow_gas_tank_yolo/`. Controleer de licentie in die map voordat je ze buiten het vak deelt.

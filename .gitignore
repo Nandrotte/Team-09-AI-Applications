@@ -20,13 +20,44 @@ data/processed/*
 !data/processed/gasbottles/
 data/processed/gasbottles/*
 !data/processed/gasbottles/data.yaml
+data/processed/ok_nok/
+models/ok_nok_best.pt
+
+# Primagaz data is under NDA and this repository is public:
+# no videos, frames, crops, per-bottle ground truth or weights trained on it.
+data/raw/primagaz/
+data/processed/primagaz_detector/
+models/primagaz_detector.pt
+models/ok_nok_threshold.json
+models/pretrained/yoloe*
+results/training/primagaz_*/weights/
+results/training/primagaz_*/*batch*.jpg
+results/test/primagaz_*/*batch*.jpg
+results/training/ok_nok_*/weights/
+# first run, stopped early (slow data loading) and replaced by ok_nok_yolo26n_cls-2
+results/training/ok_nok_yolo26n_cls/
+results/training/ok_nok_*/*batch*.jpg
+results/pipeline/**/crops/
+results/pipeline/**/ocr_cache/
+results/pipeline/**/*.mp4
+results/pipeline/**/tracks_*.csv
+results/pipeline/**/crops_index.csv
+results/pipeline/**/classification_per_*.csv
+results/pipeline/**/ocr_*.csv
+results/pipeline/**/bottle_to_gt_reference.json
+results/pipeline/**/colour_check.json
 
 # Local editor and environment files
 .vscode/
 .idea/
 .env
+.ultralytics/
 
-# Large demo videos (regenerate with scripts/demo_multicam.py)
-results/demo/*.mp4
-results/tracking/*.mp4
+# Large videos (regenerate with scripts/render_demo_video.py)
+*.mp4
+results/pipeline/**/*.log
+
+# Public YouTube stand-in video used in WS2 v1 (not ours to redistribute)
+testvideo/
+results/pipeline/**/*_dev.*
 results/predictions/gas_tank/videotest-1st-workshop.avi
