@@ -29,3 +29,4 @@ data/processed/gasbottles/*
 # Large demo videos (regenerate with scripts/demo_multicam.py)
 results/demo/*.mp4
 results/tracking/*.mp4
+results/predictions/gas_tank/videotest-1st-workshop
